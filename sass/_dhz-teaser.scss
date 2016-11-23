@@ -1,0 +1,388 @@
+/*
+#Artikelteaser
+
+Artikelteaser sind eine besondere Form des Gridelements und zeichnen sich durch folgende Eigenschaften aus:
+
+* Sie befinden sich auf Listenseiten (Artikellisten) und/oder auf der Seitenleiste
+* Verweisen auf eine Inhalts-Detailansicht
+* Sie bestehen aus Titel, Vorspann und einem "mehr"-Link
+
+<strong>Teaser-Arten</strong>
+Es wird zwischen unterschieden zwischen:
+
+* "normalen Teasern" 
+* Topelement auf der Startseite 
+
+
+/* 
+##Nötiges Mixin: Position von Überschrift und Bild
+Mixin, um die Bilder der Teaser in den Desktopvarianten Medium und Large über die Headline und auf volle Breite zu bringen.
+Wichtig: 
+
+* Wenn das Mixin image-height entfällt, muss an dieser Stelle noch einmal geprüft werden, wie sich das Layout verhält. Und ggf. eine fixe Bildhöhe festgelegt werden.		
+* Sollte sich jemals das Grid verändern, muss hier der margin-top der h2 geändert werden. Er errechnet sich aus <i>Bildbreite/3*2 + 10 Pixel für den Abstand</i>.	
+
+
+<div id="one-column">
+	<div id="mainrow" class="row">
+		<article class="article-teaser">
+			<h2><span class="dach">Keine Einigung mit Gewerkschaft</span><a href="#" title="">Article 1</a></h2>
+			<a href="#" title="Artikeltitel">
+				<img src="../imgopt/teaser/dummy-default.jpg" srcset="../imgopt/teaser/dummy-small.jpg 75w, ../imgopt/teaser/dummy-large.jpg 300w" sizes="(min-width: 960px) 300px, 75px" alt="Dummy-Bild">
+			</a>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi.<br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi. <a class="more" href="#">mehr</a>
+			</p>
+			<span class="meta">
+				Branche - Datum <span class="glyphicon glyphicon-download-alt" aria="hidden"></span> <span class="glyphicon glyphicon-film" aria="hidden"></span>
+			</span>
+		</article>
+		<article class="article-teaser">
+			<h2><span class="dach">Keine Einigung mit Gewerkschaft</span><a href="#" title="">Article 2</a></h2>
+			<a href="#" title="Artikeltitel">
+				<img src="../imgopt/teaser/dummy-default.jpg" srcset="../imgopt/teaser/dummy-small.jpg 75w, ../imgopt/teaser/dummy-large.jpg 300w" sizes="(min-width: 960px) 300px, 75px" alt="Dummy-Bild">
+			</a>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi.<br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi. <a class="more" href="#">mehr</a>
+			</p>
+			<span class="meta">
+				Branche - Datum <span class="glyphicon glyphicon-download-alt" aria="hidden"></span> <span class="glyphicon glyphicon-film" aria="hidden"></span>
+			</span>
+		</article>
+	</div>
+</div>
+
+```
+		@mixin scale-teaser {
+	position: relative;
+	img {
+		position: absolute;
+		top: 0px;
+		width: auto;
+		@include image-height (300px);
+		overflow:hidden;
+		display: block;
+		margin: 0 0 $elementPadding*2 0;
+	}
+	h2 {
+		margin-top: 210px;
+	}
+}	
+```
+
+*/
+
+@mixin scale-teaser {
+	position: relative;
+	img {
+		position: absolute;
+		top: 0px;
+		width: auto;
+		@include image-height (300px);
+		overflow:hidden;
+		display: block;
+		margin: 0 0 $elementPadding*2 0;
+	}
+	h2 {
+		margin-top: 210px;
+	}
+}
+
+/*
+##Topelement
+Als Topelement mit der id="top" wird der große Kasten auf der Startseite bezeichnet. Umspannende Spaltenanzahl in den einzelnen Ansichten:
+
+* Smartphone: 12 Spalten
+* Tablet: 12 Spalten
+* kleiner Bildschirm: 8 Spalten
+* großer Bildschirm: 9 Spalten
+					
+```
+<div id="two-column">
+	<div id="mainrow" class="row">
+		<article id="top" class="top-thema">
+			<a href="#" title="Artikeltitel">
+				<img src="../imgopt/teaser/dummy-teaser.jpg" alt="" title="" />
+			</a>
+			<div class="text">
+				<h2><span class="dach visible-md visible-lg">Keine Einigung mit Gewerkschaft</span><a href="#" title="">Titel des Top-Themas im grauen Kasten zweizeilig</a></h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit. <a class="more" href="#">mehr</a>
+				</p>
+			</div>
+			<div class="showcase-more">
+				<a href="#" title="Einkommensteuererklärung 2014: So sparen Sie Steuern"><span class="glyphicon glyphicon-file" aria="hidden"></span>Ein kürzerer Linktitel</a>
+				<a href="#" title="Einkommensteuererklärung 2014: So sparen Sie Steuern"><span class="glyphicon glyphicon-camera" aria="hidden"></span>Das ist ein etwas längerer Titel der nun ganz gut funktioniert</a>
+				<a href="#" title="Einkommensteuererklärung 2014: So sparen Sie Steuern"><span class="glyphicon glyphicon-film" aria="hidden"></span>Meinungen dazu?</a>
+			</div>
+		</article>				
+	</div>
+</div>	
+```
+*/
+.top-thema {
+	@extend .col-xs-12;
+	@extend .marg-bottom-2x;
+	@extend .clearfix;
+	@extend .no-float;
+}
+
+#top {
+
+	h2 {
+		margin-top: 0;
+	}
+
+	img {
+		width:100%;
+	}
+
+	> div > a {
+		@extend .col-sm-6;
+		@extend .no-pad;			
+	}
+		
+	.text {		
+		display:block;		
+		@extend .gray-lighter;
+		@extend .pad;
+	}
+
+	.showcase-more {
+		background: $gray-lighter;
+		@extend .clearfix;
+		@extend .pad;
+		a {
+			display:block;
+			padding: $elementPadding/2 0 0 0;
+			overflow: hidden;
+			width:100%;		
+
+			&:first-child{
+				@include add-border (1px, $gray-light, 'top');
+			}
+		}
+	}
+
+	@media (min-width: $screen-sm-min) {
+
+		> div {
+			@extend .gray-lighter;
+		}
+
+		.text {
+			width: 50%;
+			overflow: hidden;			
+			float: right;
+			padding-bottom: 0px !important;			
+
+			> p {
+				margin: 0;
+			}
+		}
+
+		.showcase-more {
+			@extend .clearfix;
+			clear:both;
+			padding: $elementPadding/2 0 0 $elementPadding;			
+			width: 100%;
+			border-top: none;
+			padding:0;
+			background-color: $white;
+			
+			a {					
+				@include add-border (1px, $gray-lighter, 'bottom');
+				padding: $elementPadding/2 0;
+				width:100%;
+				&:first-child {
+					border-top:none;
+					padding-top: $elementPadding;
+				}				
+			}
+
+		}
+	}
+
+	@media (min-width: $screen-md-min) {
+		img {
+			@include image-height (470px);
+		}
+
+		h2 a{
+			font-size: 1.5em;			
+		}
+
+		.text {
+			height: calc(470px/3*1.4);
+		}
+
+		.showcase-more {
+			background: $gray-lighter;
+			width: 50%;
+			height: calc(470px/3*0.6);
+			float: right;
+			border-bottom: none;
+			padding: $elementPadding;
+			clear: none;
+
+			a {
+				white-space: nowrap;
+				float: none;
+				display: block;
+				width: 100%;
+				border: none;
+				padding: $elementPadding/2 0 0 0;
+				overflow: hidden;				
+
+				&:first-child{
+					@include add-border (1px, $gray-light, 'top');
+					padding-top: $elementPadding/2;
+				}
+			}
+		}
+	}
+}
+
+/*
+##Teaser in Artikellisten
+Die Klasse .article-teaser betrifft Teaser auf allen Seiten mit Artikellisten. Hierzu zählen Startseite, Channel und Themenseiten.
+Dieses Inhaltselement zeichnet sich durch mehrere Besonderheiten aus:
+
+* So erhalten - je nach Bildschirmgröße - die jeweils ersten drei (Desktop large) bzw. ersten zwei Teaser (alle anderen Ansichten) ein Vorschaubild.
+* Zusätzlich werden - ebenfalls je nach Bildschirmgröße - unterschiedliche Bilddateien geladen, um bei den Mobilversionen der Website eine möglichst hohe Performance zu gewährleisten.
+* Während bei den beiden Mobil-Ansichen der Titel über dem Bild ausgegeben wird, steht in den Desktop-Versionen (medium und large) das Bild über dem Titel.
+* Das Masonry-Plugin ermöglicht auf der Live-Website ein lückenloses Floaten der einzelnen Elemente auch bei unterschiedlicher Teaserlänge.
+
+```
+<div id="one-column">
+	<div id="mainrow" class="row">
+		<article class="article-teaser">
+			<h2><span class="dach">Keine Einigung mit Gewerkschaft</span><a href="#" title="">Article 1</a></h2>
+			<a href="#" title="Artikeltitel">
+				<img src="../imgopt/teaser/dummy-default.jpg" srcset="../imgopt/teaser/dummy-small.jpg 75w, ../imgopt/teaser/dummy-large.jpg 300w" sizes="(min-width: 960px) 300px, 75px" alt="Dummy-Bild">
+			</a>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi.<br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi. <a class="more" href="#">mehr</a>
+			</p>
+			<span class="meta">
+				Branche - Datum <span class="glyphicon glyphicon-download-alt" aria="hidden"></span> <span class="glyphicon glyphicon-film" aria="hidden"></span>
+			</span>
+		</article>
+
+		<article class="article-teaser">
+			<h2><span class="dach">Keine Einigung mit Gewerkschaft</span><a href="#" title="">Article 2</a></h2>
+			<a href="#" title="Artikeltitel">
+				<img src="../imgopt/teaser/dummy-default.jpg" srcset="../imgopt/teaser/dummy-small.jpg 75w, ../imgopt/teaser/dummy-large.jpg 300w" sizes="(min-width: 960px) 300px, 75px" alt="Dummy-Bild">
+			</a>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi. <a class="more" href="#">mehr</a>
+			</p>
+			<span class="meta">
+				Branche - Datum <span class="glyphicon glyphicon-download-alt" aria="hidden"></span> <span class="glyphicon glyphicon-film" aria="hidden"></span>
+			</span>
+		</article>
+
+		<article class="article-teaser">
+			<h2><span class="dach">Keine Einigung mit Gewerkschaft</span><a href="#" title="">Article 3</a></h2>
+			<a href="#" title="Artikeltitel">
+				<img style="display: block;" src="../imgopt/teaser/dummy-default.jpg" srcset="../imgopt/teaser/dummy-small.jpg 75w, ../imgopt/teaser/dummy-large.jpg 300w" sizes="(min-width: 960px) 300px, 75px" alt="Dummy-Bild">
+			</a>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mauris ut quam luctus lobortis eu vel leo. Aenean neque libero, maximus ac fringilla nec, semper nec tortor. Donec a elit commodo, consequat diam nec, volutpat ex. Nunc mauris turpis, aliquet sit amet vestibulum non, gravida non mi. <a class="more" href="#">mehr</a>
+			</p>
+			<span class="meta">
+				Branche - Datum <span class="glyphicon glyphicon-download-alt" aria="hidden"></span> <span class="glyphicon glyphicon-film" aria="hidden"></span>
+			</span>
+		</article>
+	</div>
+</div>
+```
+*/
+.teaser {
+	h2 {
+		margin-top: 0;
+	}
+
+	img {
+		width:60px;
+		@include image-height (60px);
+		overflow:hidden;
+		float:left;
+		margin: 0 $elementPadding $elementPadding 0;
+	}
+
+	@media (min-width: $screen-md-min) {
+		img {
+			width:100%;
+			@include image-height (300px);
+			overflow:hidden;
+			display: block;
+			margin: 0 0 $elementPadding*2 0;
+		}
+	}
+}
+
+/*##Artikelteaser mit Bildern
+Auf Seiten mit Artikellisten (Channels) wird in den Desktopansichten jeweils die erste Artikelteaser-Zeile jeweils mit Bildern ausgegeben.
+Das bedeutet, dass in der größten Ansicht jeweils ersten drei, in allen anderen Varianten die ersten zwei Artikel mit Bild dargestellt werden.
+Gesteuert wird diese Funktion durch JS, welches auch dafür sorgt, dass beim Ändern der Fenstergröße die Artikel neu per Masonry angeordnet werden.
+
+
+<strong>Bildformatierung für die Bilder der Teaser 1 und 2 </strong>(bei Desktop small)
+
+Im Vergleich zu den Artikelbildern in den Mobilansichten, wird ab der Version Desktop small das Bild größer und die Überschrift unter das Bild gestellt. Hierfür wird das in der _dhz-helper.scss definierte Mixin scale-teaser genutzt und mit einer entsprechenden Mediaquery verknüpft.
+```
+@media (min-width: $screen-md-min) {
+	.teaser:nth-child(1),
+	.teaser:nth-child(2) {
+		@include scale-teaser;
+	}
+}
+```
+
+*/
+@media (min-width: $screen-md-min) {
+	.teaser:nth-child(1),
+	.teaser:nth-child(2) {
+		@include scale-teaser;
+	}
+}
+
+/* <strong>Bildformatierung für das Bild des Teasers 3</strong> (bei Desktiop large)
+
+Diese Mediaquery garantiert, dass sich in der Version Desktop large auch das dritte Teaserbild wie oben beschrieben verhält.
+```
+@media (min-width: $screen-lg-min) {
+	.teaser:nth-child(3) {
+		@include scale-teaser;
+	}
+}
+```
+*/
+@media (min-width: $screen-lg-min) {
+	.teaser:nth-child(3) {
+		@include scale-teaser;
+	}
+}
+
+/* 
+##Dachzeile der Artikel-Teaser
+
+Die Dachzeile ist, genau wie der Titel, mit dem Tag h2 ausgezeichnet. Erhält allerdings einen eigenen span. Zum einen, um im Markup eine saubere Hierachie der Überschriften zu garantieren, zum anderen, um den Redakteuren mehr Spielraum bei den Formulierungen zu geben.
+```
+<h2>
+	<span class="dach">Hier ist die Dachzeile</span>
+	Und hier kommt der Artikeltitel
+</h2>
+```
+
+*/
+.dach {
+	display: block;
+	font-size: $font-size-base;
+	margin-bottom: 10px;
+	color: $gray-dark;
+}

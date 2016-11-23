@@ -1,0 +1,40 @@
+/*
+# StyleGuide - Dokumentation des DHZ-CSS
+## Grundlagen des CSS
+
+Diese Dokumentation stellt die Erläuterung der bestehenden CSS-Struktur dar und soll als Leitfaden für Erweiterungen dienen.
+Ferner soll es helfen, die entworfenen SASS-Strukturen zu verstehen sowie CSS- und html-Beispiele liefern.
+
+## Vergabe von Klassen
+Zugunsten der Prägnanz sind für Klassenbezeichnungen nur englischsprachige Bezeichnungen zu wählen.
+Mehrere Wörter werden mit einem Bindestrich (kein Unterstrich!) gekoppelt.
+
+##Formatierung des CSS
+Um eine einheitliche und übersichtliche Dokumentenstruktur beizubehalten, soll nach jedem Selektor ein Leerzeichen eingefügt werden.
+Ebenso ist auf Einrückungen (Tabs, nicht Leerzeichen!) zu achten.
+
+##Mobile first
+Ebenso ist zu beachten, dass bei Styleangaben grundsätzlich von der kleinsten Bildschirmgröße (Smartphone) auszugehen ist.
+Bei abweichenden Angaben für höhere Bildschirmauflösungen ist mit der Mediaquery @media (min-width:...) zu arbeiten.
+
+
+*/
+
+@import "bootstrap-variables";
+@import "bootstrap";
+@import "dhz-configuration";
+@import "dhz-navigation";
+@import "dhz-helper";
+@import "dhz-grid";
+@import "dhz-teaser";
+@import "dhz-typography";
+@import "dhz-tablesaw.stackonly";
+@import "dhz-detailseite";
+@import "dhz-comments";
+@import "slick";
+@import "slick-theme";
+@import "dhz-mediathek";
+@import "dhz-ads";
+@import "dhz-supplementary";
+@import "dhz-anzeigenmarkt";
+@import "dhz-footer";

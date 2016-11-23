@@ -1,0 +1,17 @@
+/**
+ * Formatierungen des Footers
+ *
+ * BEGIN
+ */
+ footer {
+ 	ul {
+ 		li {
+ 			padding-top: $elementPadding*2;
+
+ 			a {
+ 				color: $gray;
+ 				text-transform: uppercase;
+ 			}
+ 		}
+ 	}
+ }

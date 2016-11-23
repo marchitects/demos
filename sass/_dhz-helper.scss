@@ -1,0 +1,649 @@
+/*
+
+# Helper Classes
+Klassen, die generisch für jedes Element verwendet werden können.
+Bevor hier eine Klasse erstellt wird, bitte nachsehen, ob es nicht bereits eine Bootstrap-Klasse gibt, die den Zweck erfüllt!
+
+* @see: http://tomasjanecek.cz/en/clanky/post/list-of-bootstrap-3-css-classes-with-description
+	
+* @see: https://gist.github.com/geksilla/6543145
+
+* @see: http://getbootstrap.com/css/#helper-classes
+
+*/
+
+ // Globales Verhindern von Outlines um Links bei Klick
+a:active, a:focus {outline: none;}
+
+
+/* 
+# Spezielle Headlines
+
+In diesem Teile werden Headlines definiert, die von den Original defnierten abweichen und sich nicht in der Bootstrap Dokumentation befinden.
+
+## Headlines mit Border unten
+
+```
+<h1 class="border-bottom">Das ist eine H1-Headline mit einer Border unten</h1>
+<h2 class="border-bottom">Das ist eine H2-Headline mit einer Border unten</h2>
+```
+*/
+h1.border-bottom,h2.border-bottom,h3.border-bottom,.h1.border-bottom,.h2.border-bottom,.h3.border-bottom {
+	padding-bottom: $elementPadding; 
+	margin-bottom: $elementPadding*2;	
+}
+/*
+# Breite erzwingen
+
+Mit dieser Helper-Klasse lässt sich eine Breite erzwingen. Dies wird z.B. bei Bildern verwendet, die immer 100% des Platzes einnehmen sollen.
+
+```
+<img class="w100" src="../imgopt/teaser/dummy-large.jpg">
+```
+ */
+
+.w100 {
+	width: 100%;
+}
+
+
+/*
+# Abstände
+
+Um unnötig viele verschiedene Abstände zu vermeiden, die das Layout einer Website unruhig erscheinen lassen, gibt es nur wenige fest definierte Innen- und Außenabstände.
+
+## Innenabstände (Paddings)
+
+Folgende Klassen für Innenabstände wurden definiert:
+
+* .pad (Komplettes padding einmal um das ganze Element herum)
+* .pad-bottom (Festgelegter Innenabstand nach unten)
+* .pad-bottom-2x (Doppelter Innenabstand nach unten)
+* .pad-top (Festgelegter Innenabstand nach oben)
+* .pad-top-2x (Festgelegter Innenabstand nach oben)
+
+
+```
+	<section class="pad">
+	    <div>.pad</div>
+	</section>
+
+	<section class="pad-bottom">
+	    .pad-bottom
+	</section>
+
+	<section class="pad-bottom-2x">
+	    .pad-bottom-2x
+	</section>
+
+	<section class="pad-top">
+	    .pad-top
+	</section>
+
+	<section class="pad-top-2x">
+	    .pad-top-2x
+	</section>
+
+```
+*/
+.pad {
+	padding: $elementPadding;
+}
+
+.pad-bottom {
+	padding-bottom: $elementPadding;
+}
+
+.pad-bottom-2x {
+	padding-bottom: $elementPadding*2;
+}
+.pad-top {
+	padding-top: $elementPadding;
+}
+
+.pad-top-2x {
+	padding-top: $elementPadding*2;
+}
+/* 
+## Innenabstände entfernen
+
+Hin und wieder kommt es vor, dass ein Element keinen Innenabstand haben soll, obwohl eine Klasse diesen definiert. 
+In diesem Fall kann man die Klasse *no-pad* verwenden, die diesen Abstand entfernt.
+
+```
+<section class="no-pad">
+    .no-pad
+</section>
+```
+*/
+.no-pad {
+	padding: 0 !important;
+}
+
+/*
+## Außenabstände (Margins)
+
+Folgende Klassen für Innenabstände wurden definiert:
+
+* .marg-bottom (Festgelegter Außenabstand nach unten)
+* .marg-bottom-2x (Doppelter Außenabstand nach unten)
+* .marg-bottom-xs (Festgelegter Außenabstand, der erst bei Smartphones ausgegeben wird)
+* .marg-top (Festgelegter Außenabstand nach oben)
+* .marg-bottom-2x (Doppelter Außenabstand nach oben)
+*/
+
+/* 
+```
+<section class="marg-bottom">
+    .marg-bottom
+</section>
+
+<section class="marg-bottom-2x">
+    .marg-bottom-2x
+</section>
+
+<section class="marg-bottom-xs">
+    .marg-bottom-xs
+</section>
+
+<section class="marg-top">
+    .marg-top
+</section>
+
+<section class="marg-top-2x">
+    .marg-top-2x
+</section>
+```
+*/
+.marg-bottom {
+	margin-bottom: $elementPadding;
+}
+
+.marg-bottom-2x {
+	margin-bottom: $elementPadding*2;
+}
+
+.marg-bottom-xs {
+	margin-bottom: $elementPadding;
+	@media (min-width: $screen-sm-min) {
+		margin-bottom: 0;
+	}
+}
+
+.marg-top {
+	margin-top: $elementPadding;
+}
+
+.marg-top-2x {
+	margin-top: $elementPadding*2;
+}
+
+/* 
+## Außenabstände entfernen
+
+Hin und wieder kommt es vor, dass ein Element keinen Außenabstand haben soll, obwohl eine Klasse diesen definiert. 
+In diesem Fall kann man die Klasse *no-marg* verwenden, die diesen Abstand entfernt.
+
+```
+<section class="no-marg">
+    .no-marg
+</section>
+```
+*/
+.no-marg {
+	margin: 0 !important;
+}
+
+
+// Mixins //
+
+/* 
+# Border
+Für Ränder um ein Element gibt es ein SASS-Mixin, *@mixin add-border*.
+Dieses kann uns sollte immer verwendet werden, wenn Ränder erwünscht sind.
+
+## SASS Mixin add-border
+
+Das Mixin add-border wird in CSS-Klassen via @include add-border integriert.
+
+Als Parameter werden mitgegeben:
+
+* $size:		Dicke der Rahmenlinie in px
+* $color:		Farbe der Rahmenlinie in HEX
+* $position:	Position der Rahmenlinie, und zwar eine von:
+
+	* 'all':	Rahmenlinien an allen vier Seiten eines Elementes
+	* 'top': Linie nur oben
+	* 'bottom': Linie nur unten
+	* 'left': Linie nur links
+	* 'right': Linie nur rechts
+	* 'top-bottom': Linie oben und unten
+	* 'left-right': Linie links und rechts
+
+```
+<pre>
+	<code>
+		@include add-border ('1px', '#ff0000', 'all')
+	</code>
+</pre>
+```
+*/
+@mixin add-border ($size, $color, $position) {
+	@if $position == 'all' {
+		border: $size solid $color; 
+	}
+	@else if $position == 'top' {
+		border-top: $size solid $color;
+	}
+	@else if $position == 'bottom' {
+		border-bottom: $size solid $color;
+	}
+	@else if $position == 'left' {
+		border-left: $size solid $color;
+	}
+	@else if $position == 'right' {
+		border-right: $size solid $color;
+	}
+	@else if $position == 'top-bottom' {
+		border-top: $size solid $color;
+		border-bottom: $size solid $color;
+	}
+	@else if $position == 'left-right' {
+		border-left: $size solid $color;
+		border-right: $size solid $color;
+	}
+}
+
+/* 
+## Border im HTML als CSS-Klasse verwenden
+
+Folgende Klassen können für jedes Element im HTML verwendet werden; sie selbst verwernden allesamt das o.g. Mixin add-border.
+Die Klasse kümmert sich selbstständig um die im Styeguide zugelassene Farbe für Rahmen.
+
+*/
+
+/*
+## Border per Klasse vergeben
+
+Je nach Klasse lässt sich eine Border-Klasse an das gewünschte Element hinzufügen.
+
+Folgende Klassen sind vorgesehen:
+
+* .border-top-bottom
+* .border-top
+* .border-bottom
+* .border-right
+* .border-left
+* .border-left-right
+* .border-all
+
+```
+<p>
+	<section class="border-top-bottom">
+		.border-top-bottom
+	</section>
+</p>
+<p>
+	<section class="border-top">
+		.border-top
+	</section>
+</p>
+<p>
+	<section class="border-bottom">
+		.border-bottom
+	</section>
+</p>
+<p>
+	<section class="border-right">
+		.border-right
+	</section>
+</p>
+<p>
+	<section class="border-left">
+		.border-left
+	</section>
+</p>
+<p>
+	<section class="border-left-right">
+		.border-left-right
+	</section>
+</p>
+<p>
+	<section class="border-all">
+		.border-all
+	</section>
+</p>
+```
+*/
+.border-top-bottom {
+	@include add-border (1px, $gray-lighter, 'top-bottom');
+}
+
+.border-top {
+	@include add-border (1px, $gray-lighter, 'top');
+}
+
+.border-bottom {
+	@include add-border (1px, $gray-lighter, 'bottom');
+}
+
+.border-right {
+	@include add-border (1px, $gray-lighter, 'right');
+}
+
+.border-left {
+	@include add-border (1px, $gray-lighter, 'left');
+}
+
+.border-left-right {
+	@include add-border (1px, $gray-lighter, 'left-right');
+}
+
+.border-all {
+	@include add-border (1px, $gray-lighter, 'all');
+}
+
+/*
+#Images
+hierbei handelt es sich um ein "Hilfs-Mixin" zur Erstellung der html-Templates, um das von Sitefusion erzwungene Bildseitenverhältnis von 3:2 darzustellen.
+Diese Klasse entfällt nach der Portierung der Templates.
+
+Das Mixin image-height wird in CSS-Klassen via @include image-height integriert.
+
+Als Parameter wird mitgegeben:
+
+* $width:		Die Breite des Bildes in px, anhand ihr errechnet sich die Höhe
+
+```
+@include image-height ('350px')	
+```
+*/
+
+@mixin image-height ($width){
+		height: $width/3*2;
+	}
+
+
+/*
+#Farben
+Gemäß des StyleGuides werden auf der Webseite nur definierte Farben zugelassen, um ein einheitliches Layout zu garantieren. Dies erlaubt es, Elementen wie z. B. Boxen
+vordefinierte Farbklassen zu geben. Diese können dann einfach Websiteelementen beigefügt werden.
+
+##Voraussetzung: das Mixin add-background
+
+Um dies möglichst schlank zu realisieren, wird mit dem Mixin add-background gearbeitet.
+Als Parameter wird mitgegeben:
+
+* $color:		zulässig sind Hexadezimalcodes und die in den Bootstrapvariablen gesetzen Platzhalter
+
+-> Hierzu gehören:
+
+* $brand-primary		
+* $brand-secondary		
+* $gray-lighter		
+
+Gleichzeitig wird hierin eine zum jeweiligen Hintergrund passende Schriftfarbe definiert, um stets eine optimale Lesbarkeit zu gewährleisten.
+```
+@mixin add-background ($color) {
+	background:$color;
+	@if $color == $brand-primary {
+	color: #fff;
+		h1, h2, h3, h4, a {
+			color:#fff;
+		}
+	}
+
+	@else {
+	color: $gray-dark;
+	}
+
+}
+```
+*/
+
+
+@mixin add-background ($color) {
+	background:$color;
+	@if $color == $brand-primary {
+	color: #fff;
+		h1, h2, h3, h4, a {
+			color:#fff;
+		}
+	}
+
+	@else {
+	color: $gray-dark;
+	}
+
+}
+
+/*
+##Farbklassen
+Das DHZ-Layout verfügt über folgende Farbklassen:
+
+* .white		
+* .primary:		entspricht der CI-Farbe Blau
+* .secondary:		enspricht der CI-Farbe Mittelgrau
+* .gray-lighter:		entspricht Lichtgrau
+
+*/
+
+.white {
+	@include add-background (#fff);
+}
+
+.primary {
+	@include add-background ($brand-primary);
+}
+
+.secondary {
+	@include add-background ($brand-secondary);
+}
+
+.gray-lighter {
+	@include add-background ($gray-lighter);
+}
+
+.heading-font {
+	font-family:$headings-font-family;
+}
+
+
+
+/* 
+# Klasse no-float
+Aufgrund des Masonry-Plugins musste eine Klasse eingeführt werden, die das Floaten der Grid-Elemente verhindert.
+
+```
+.no-float {
+	float: none !important;
+}
+```
+*/
+
+.no-float {
+	float: none !important;
+}
+
+/* # Links */
+/*
+## "mehr"-Link mit festem Icon
+
+Mit dieser Klasse lässt sich vor einen Link ein Pfeil Setzen.
+In der Sidebar in Boxen erhält die Klasse zusätzlich eine Border oben.
+ 
+```
+Klasse direkt dem Link geben:
+<a class="more" href="#">mehr link 1</a>
+
+	
+oder einem umspannenden "&lt;span&gt;&lt;/span&gt;":
+<span>
+	<a class="more" href="#">mehr link 2</a>
+	<a class="more" href="#">mehr link 3</a>
+</span>
+
+```
+*/
+a.more, span.more a {
+	&:before {
+		content:"\e258";
+		font-size: 60%;
+		font-family: 'Glyphicons Halflings';
+		font-style: normal;
+		font-variant: normal;		
+		line-height: $line-height-base;
+		text-transform: none;
+		padding-right: $line-height-base*2px;		
+	}		
+}
+
+#sidebar-right {
+	a.more, .more {
+		text-align: right;
+		padding: $elementPadding 0 0 0;
+		@include add-border (1px, $gray-light, 'top');
+		display: block;
+	}
+}
+
+/* Wenn mehr als ein Link, dann das more bei einem umschließenden span verwenden*/
+span.more {
+	a {
+		border: none;
+		padding: 0;
+		display: block;
+	}	
+}
+
+/*
+##Icons
+Zur Darstellung von Icons werden sogenannte Glyphicons verwendet. Diese werden über spans mit den Klassen .glyphicon und .glyphicon-xy erzeugt. 
+Um zusätzlichen Non-Breaking-Spaces einfügen zu müssen, erhalten bestimmte Glyphicons in speziellen Bereichen per css einen Margin-right mit dem Wert $elementPadding. 
+```
+<span class="glyphicon glyphicon-download-alt" aria="hidden"></span> <span class="glyphicon glyphicon-film" aria="hidden">
+```
+*/
+.box-heading, .heading, .showcase-more, .meta, .dl-horizontal, .media-item, .breadcrumb, .h1, h1, .h2, h2, .h3, h3, .h4, h4, .h5, h5{
+	.glyphicon {
+		margin-right: $elementPadding;
+	}
+}
+
+/*
+##Metaangaben
+Infos wie Channel, Datum sowie eventuell angehängte Downloads und Multimediaelemente finden sich in der span-Klasse ".meta" wieder. 
+```
+<span class="meta">
+	Branche - Datum
+	<span class="glyphicon glyphicon-download-alt" aria="hidden"></span> <span class="glyphicon glyphicon-film" aria="hidden"></span>
+</span>
+```
+*/
+
+.meta {
+	font-size: 0.9em;
+	display: block;
+	width: 100%;
+	color: $gray;
+	padding-bottom: $elementPadding;
+	@include add-border (1px, $gray-lighter, 'bottom');
+}
+
+
+/*
+##Nav
+Bei einer Tab-Navigation bei der mehr Text in den Tabs steht und die Gefahr besteht, dass ein Tab zweizeilig wird und somit das Layout der Tabs zerstört, wird mit der helper-Klasse "more-text" für den Link im Tab in der Ansicht md im zweispaltigen Template in der Mainrow eine feste Höhe vergeben. 
+```
+<div id="two-column">
+	<div id="mainrow">
+		<ul class="nav nav-tabs nav-justified more-text">
+			<li role="button"><a href="anzeigenpaket-waehlen.php">Anzeigenpaket wählen</a></li>
+			<li role="button" class="active"><a href="anzeige-erstellen.php">Anzeige erstellen</a></li>
+			<li role="button"><a href="kundendaten.php">Kundendaten &amp; Zahlungsweise</a></li>
+			<li role="button"><a href="anzeigenmarkt-zusammenfassung.php">Zusammenfassung</a></li>
+		</ul>
+	</div>
+</div>
+```
+*/
+
+#two-column {
+	#mainrow {
+		.nav-tabs.more-text {
+			@media (min-width: $screen-sm-min) {
+				li {
+					a {
+						height: 60px;
+					}
+				}
+			}
+			@media (min-width: $screen-lg-min) {
+				li {
+					a {
+						height: auto;
+					}
+				}
+			}			
+		}
+	}
+}
+
+/*
+##Nach Oben Button
+Dies ist ein Button am Ende der Seite, der einen wieder nach oben zur Navigation. Er hat immer ein margin-top und ein margin-bottom.
+```
+<a role="button" class="btn-to-top" title="nach oben" href="#">nach oben<span class="glyphicon glyphicon-menu-up"></span></a>
+```
+*/
+
+.btn-to-top {
+	@extend .btn; 
+	@extend .btn-default; 	
+	margin: $elementPadding*2 0;
+	.glyphicon {
+		margin-left: 10px;
+	}
+}
+
+
+/* Anpassung für inline-forms, wenn zwei Inputs nebeneinander sind, sollen die width immer 100% sein und nicht auto */
+
+.form-inline {
+	.form-control {
+		width: 100%;
+	}
+}
+
+/*
+##Image Overlay Icon innerhalb eines verlinkten Bildes
+Mit diesen zwei Klassen lässt sich ein Icon mittig über ein verlinktes Bild platzieren
+```
+<div style="width:300px;">
+	<a class="image-overlay-icon-container" href="#"><span class="image-overlay-icon glyphicon glyphicon-camera" aria-hidden="true"></span><img src="../imgopt/teaser/dummy-large.jpg"></a>
+</div>
+```
+*/
+.image-overlay-icon-container {
+	position: relative;
+	display:block;
+	&:hover {
+		.image-overlay-icon {
+			opacity: 0.8;
+		}
+	}
+}
+
+.image-overlay-icon {
+	position: absolute;
+	opacity: 0.5;
+	top: 50%;
+	left: 50%;
+	margin-top: -20px; 
+	margin-left: -20px;	
+	z-index: 1000;
+	font-size: 40px;
+	text-shadow: 0 0 3px rgba(0,0,0,1);	
+	opacity: 0.6;
+	color: $white;	
+}

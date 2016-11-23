@@ -1,0 +1,13 @@
+/*!
+ * Styling der Kommentarfunktion
+ */
+.kommentare {
+    .item {
+        margin-top:$elementPadding*2;
+
+        time {
+            color:$gray;
+            font-style:italic;
+        }
+    }
+}

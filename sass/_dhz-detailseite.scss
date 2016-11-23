@@ -1,0 +1,253 @@
+/*
+ #Artikeldetailansicht
+ Die Artikeldetailansicht enthält einige Besonderheiten bezüglich der Darstellung von Einzelelementen. Aus diesem Grund erhält der gesamte Article-Tag die Zusatzklasse .detail.
+
+ ## Breadcrumb
+ Der Breadcrumb wird über Bootstrap als Ordered-List ausgegeben.
+ ```
+ <ol class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+	<li>
+		<a itemprop="url" title="Deutsche Handwerks Zeitung" href="/">
+			<span itemprop="title"><span class="glyphicon glyphicon-home" aria="hidden"></span>Home</span>
+		</a>
+	</li>
+	<li>
+		<a itemprop="url" title="Politik + Wirtschaft" href="/politik-wirtschaft/158/3091">
+			<span itemprop="title">Politik + Wirtschaft</span>
+		</a>
+	</li>
+	<li class="active">
+		<span itemprop="title">Griechenland droht Staatsbankrott</span>
+	</li>
+</ol>
+ ```
+ 
+ */
+
+.breadcrumb {
+	font-size: 0.9em;
+}
+
+/* 
+##Klassen im Kopfbereich
+```
+<article itemscope="" itemtype="http://schema.org/Article" class="detail clearfix">
+	<span class="meta" itemprop="articleSection">Politik + Wirtschaft  -  <meta itemprop="datePublished" content="2011-03-20">20.03.2015 </span>
+	<h1 itemprop="headline"><span class="dach">EU-Gipfel in Brüssel&nbsp;</span>Griechenland droht Staatsbankrott</h1>
+	<p class="vorspann" itemprop="description">
+		Athen will die EU-Regierungschefs auf dem EU-Gipfel in Brüssel zu einer massiven Schuldenentlastung drängen - das Land steht kurz vor der Zahlungsunfähigkeit. Die Stimmung unter den Staatschefs ist allerdings schlecht. <br>
+	</p>
+	<span class="author">von &nbsp;<span class="name" itemprop="author">Hajo Friedrich</span></span>
+	<section class="secondary pad marg-bottom-2x">
+		Dieser Artikel ist Bestandteil des Themenpakets <a href="#" title="Titel">Pleitegeier</a>
+	</section>
+<article>	
+```
+*/
+
+/*
+##Weiterführende Inhalte
+
+Container für "schmale" Zusatzkästen, die vom Text rechts umflossen werden. Erhalten zusätzlich ein umschließendes Aside-Tag. Dieses setzt den Innenabstand auf Null, definiert den Float und sorgt für den Abstand nach rechts.
+```
+<div class="detail">									
+	<aside class="col-xs-12 col-md-6 col-lg-5">
+		<section class="box box-secondary-white">
+			<div>
+				<span class="box-heading"><span class="glyphicon glyphicon-plus" aria="hidden"></span>Downloads</span>
+				<div class="box-body">
+					<ul class="article-list">
+						<li class="item"><a title="Griechenland: Deutsche Steuerzahler haften mit" href="/griechenlandkrise-auch-deutsche-steuerzahler-haften/150/3091/263892">Griechenland: Deutsche Steuerzahler haften mit</a></li>
+						<li class="item"><a title="Griechenland: Deutsche Steuerzahler haften mit" href="/griechenlandkrise-auch-deutsche-steuerzahler-haften/150/3091/263892">Griechenland: Deutsche Steuerzahler haften mit</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="box box-gray-lighter-heading">
+			<div class="border-bottom">
+				<span class="box-heading"><span class="glyphicon glyphicon-duplicate" aria="hidden"></span>Weitere Beiträge zum Thema</span>
+				<div class="box-body">
+					<ul class="article-list">
+						<li class="item"><a title="Griechenland: Deutsche Steuerzahler haften mit" href="/griechenlandkrise-auch-deutsche-steuerzahler-haften/150/3091/263892">Griechenland: Deutsche Steuerzahler haften mit</a></li>
+						<li class="item"><a title="Griechenland: Deutsche Steuerzahler haften mit" href="/griechenlandkrise-auch-deutsche-steuerzahler-haften/150/3091/263892">Griechenland: Deutsche Steuerzahler haften mit</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>									
+	</aside>								
+	<p>
+		"Im Geiste gegenseitigen Vertrauens sind wir alle bereit, die Arbeit zu beschleunigen und so schnell 
+		wie möglich abzuschließen", heißt es vage in einer gemeinsamen Erklärung der Gesprächsteilnehmer. 
+		Dazu gehörten neben Tsipras auch EU-Kommissionspräsident Jean-Claude Juncker und EU-Ratspräsident 
+		Donald Tusk. "Wir sind optimistischer nach den Beratungen", sagte Tsipras. Die für die Prüfung der 
+		griechischen Reformanstrengungen verbundenen Gespräche sollen in den kommenden Wochen in Brüssel, 
+		aber auch in Athen stattfinden. Ob dies ausreicht, die drohende Staatspleite des Landes abzuwenden, 
+		ist zweifelhaft.  "Die Zeit läuft ab", sagte der Chef der Eurogruppe, der niederländische Finanzminister
+		Jeroen Dijsselblom.
+	</p> 
+</div>	 
+```
+*/
+
+/*##Ordered Lists
+Sortierte Listen innerhalb von Artikeln
+```
+<div class="detail">
+	<ol>
+		<li>Zur Vergiftung des Gesprächs- und Verhandlungsklimas zwischen Athen und den Europartnern tragen fast täglich neue Forderungen, Anwürfe und Ankündigungen griechischer Regierungspolitiker bei. Auf der Suche nach möglichen Kreditgebern wolle Tsipras schon bald nach Moskau reisen, hieß es abermals am Donnerstag in Brüssel. </li>
+		<li>Griechenland: Deutsche Steuerzahler haften mit</li>
+		<li>Griechenland: Deutsche Steuerzahler haften mit</li>
+		<li>Griechenland: Deutsche Steuerzahler haften mit</li>
+	</ol>
+</div>
+```
+*/
+/*
+##Tabellen
+
+Tabellen stellen in Bezug auf das Responsive Design eine ganz besondere Herausforderung dar, da sie auch in der Smartphoneansicht gut vom User erfassbar sein müssen.
+Um dies zu realisieren, wird das Plugin TableSaw Stack only verwendet. Damit es greift, wird der Tabelle die Klasse "tablesaw tablesaw-stack" vergeben sowie einen umschließen div mit der Klasse .tabelle (siehe auch dhz-tabelsaw.scss + tablesaw.stackonly.js).
+
+Zusätzlich bedient sich das Layout den vorgegeben Bootstrap-Klassen für Tabellen. Hierfür werden der Tabelle zusätzlich die Klassen .table und .table-striped mitgegeben.
+```
+<div class="detail">
+	<div class="tabelle"> 
+		<table class="table table-striped tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+			<thead>
+				<tr>
+					<th scope="col">Movie Title</th>
+					<th scope="col">Rank</th>
+					<th scope="col">Year</th>
+					<th scope="col">Rating</abbr></th>
+					<th scope="col">Gross</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="title"><a href="http://en.wikipedia.org/wiki/Avatar_(2009_film)">Avatar</a></td>
+					<td>1</td>
+					<td>2009</td>
+					<td>83%</td>
+					<td>$2.7B</td>
+				</tr>
+				<tr>
+					<td class="title"><a href="http://en.wikipedia.org/wiki/Titanic_(1997_film)">Titanic</a></td>
+					<td>2</td>
+					<td>1997</td>
+					<td>88%</td>
+					<td>$2.1B</td>
+				</tr>
+				<tr>
+					<td class="title"><a href="http://en.wikipedia.org/wiki/The_Avengers_(2012_film)">The Avengers</a></td>
+					<td>3</td>
+					<td>2012</td>
+					<td>92%</td>
+					<td>$1.5B</td>
+				</tr>											
+			</tbody>
+		</table>
+	</div>
+</div>	
+```
+*/
+
+
+.detail {
+	aside {
+		float: right;
+		padding: 0;
+		margin-left: 20px;
+	}
+
+	ol {
+		list-style-type: none;
+		margin: 0;
+		margin-left: 2em;
+		padding: 0;
+		counter-reset: li-counter;
+	}
+	
+	ol > li {
+		position: relative;
+		margin-bottom: 20px;
+		padding-left: 0.5em;
+		min-height: 1.5em;
+		border-left: 2px solid $gray-lighter;
+	}
+	ol > li:before {
+		position: absolute;
+		top: 0;
+		left: -1em;
+		width: 0.8em;
+		font-size: 1.4em;
+		line-height: 1;
+		font-weight: bold;
+		text-align: right;
+		color: $gray-dark;
+		content: counter(li-counter);
+		counter-increment: li-counter;
+	}	
+	.meta {
+		border-bottom: none;
+		padding: 0;
+	}
+
+	.tabelle {
+  		@include tablesaw-stack(40em);
+  		@extend .clearfix;
+	}
+
+	.vorspann {
+		font-weight: bold;
+		display: block;
+	}
+	.author {
+		font-weight: bold;
+		margin: $elementPadding 0;
+		display: block;
+
+		.name {
+			font-weight: 300;
+			@extend .text-uppercase;
+			font-family: $headings-font-family;
+			font-size: 1.2em;
+		}
+	}
+	.panel {
+		p,ul,ol {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	/* Artikelbild groß und klein */	
+	.article-image {
+		@extend .col-xs-12;
+		@extend .col-md-7;
+		margin: 0 0 $elementPadding*2 $elementPadding*2;
+		float: right;
+		padding:0;
+		img {
+			width: 100%;
+		}
+	}
+	aside .article-image {
+		@extend .col-xs-12;
+		@extend .col-md-12;
+		padding:0;
+		margin: 0 0 $elementPadding*2 0;
+	}
+	figure.grid-item {
+		@extend .no-pad;				
+		margin-left: $elementPadding*2;
+		img {
+			width: 100%;
+		}
+	}
+}
+
+figcaption {
+	color: $gray;
+	font-style: italic;
+	display: block;
+}

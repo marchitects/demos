@@ -1,0 +1,63 @@
+/**
+ * Formatierungen der Mediathek
+ *
+ * BEGIN
+ */
+
+
+.moremedia {
+		.inner {
+			text-align: right;
+			margin: $elementPadding 0;
+			background: $gray-lighter;
+			padding: $elementPadding $elementPadding*2;
+
+			a {
+				width: 100%;
+				display: block;
+			}
+		}
+
+		@media (min-width: $screen-md-min) {
+			.inner {
+				padding: $elementPadding/2 $elementPadding;
+
+				a {
+					width: auto;
+					display: inline;
+				}
+			}
+		}	
+}
+
+
+legend.description { 	 
+	font-size: $font-size-base;
+	margin: $elementPadding*2 0;
+ }
+ 
+.more-related-items {
+	@extend .col-sm-4;
+	@extend .box.box-gray-lighter-white;
+	margin-bottom: $elementPadding*2;
+	 	
+	img {
+		max-width: 100%;
+		float: left;
+		margin: 0 $elementPadding $elementPadding 0;
+		display: block;
+	}
+	@media (min-width: $screen-sm-min) {
+		img {
+			float: none;
+			margin: 0;
+		}
+	} 		 	
+
+}
+#sidebar-right {
+	.more-related-items {
+		@extend .col-md-12;
+		@extend .col-lg-12;
+	}
+}

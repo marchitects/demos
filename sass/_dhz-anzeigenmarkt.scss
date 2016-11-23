@@ -1,0 +1,40 @@
+/*
+ #Anzeigenmarkt
+  */
+/*
+##Anzeige erstellen
+*/
+.create-announcement {
+	.dl-horizontal dt {
+		text-align:left;
+	}		
+}
+
+// Classified List
+
+.classified-list  {
+	.list-item {
+		@extend .border-bottom;
+		padding: $elementPadding*2 0;
+		article {
+			h2 {
+				margin-top: 0;
+			}
+			p {
+				&:last-child {
+					margin: 0;
+				}
+			}
+		}
+	}
+	.list-item.secondary {
+		figure {
+			padding-left: $elementPadding*2.5;		
+		}
+	}
+	.list-item.top {
+		background-image: url("../imgopt/top.png");		
+    	background-position: right top;
+   		background-repeat: no-repeat;
+	}	
+}

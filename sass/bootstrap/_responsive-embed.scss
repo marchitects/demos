@@ -1,0 +1,48 @@
+// Embeds responsive
+//
+// Credit: Nicolas Gallagher and SUIT CSS.
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .embed-responsive-item,
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+}
+
+// Modifier class for 16:9 aspect ratio
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+
+// Modifier class for 4:3 aspect ratio
+.embed-responsive-4by3 {
+  padding-bottom: 75%;
+}
+
+// Modifier class for 20:13 aspect ratio (Classifieds)
+.embed-responsive-20by13 {
+  padding-bottom: 65%;
+}
+
+// Modifier class for 13:15 aspect ratio (Kontakte)
+.embed-responsive-13by15 {
+  padding-bottom: 117%;
+}
+.embed-responsive-15by28 {
+  padding-bottom: 160%;
+}

@@ -1,0 +1,28 @@
+/**
+ * Formatierungen von Werbeplaetzen
+ *
+ * BEGIN
+ */
+.adWrapper {
+	background: $gray-lighter;
+	overflow: hidden;
+
+	.adWrapperTop{
+		width: 100%;
+		height: 90px;
+	}
+
+	.superbanner {
+		width: 728px;
+	}
+
+	.topLeft {
+		background: red;
+	}
+
+	.billBoard {
+		height: 250px;
+		text-align: center;
+	}
+}
+
